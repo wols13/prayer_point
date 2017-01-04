@@ -1,0 +1,24 @@
+body {
+	background: white url("images/index_background.jpg") fixed no-repeat right top;
+	background-size: cover;
+}
+
+.mrg-btm-zero {
+	margin-bottom: 0;
+}
+
+.bg-color-transparent {
+	background-color: transparent;
+}
+
+.pacifico {
+	font-family: 'Pacifico', Helvetica, Arial, sans-serif !important;
+}
+
+.text-white {
+	color: #FFFFFF !important;
+}
+
+.text-theme {
+	color: $theme-color !important;
+}

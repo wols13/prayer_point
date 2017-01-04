@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "scss/style.css",
+	"sources": [
+		"scss/style.scss"
+	],
+	"sourcesContent": [
+		"$header-height: 80px;\r\n\r\nbody {\r\n    background: white url(\"images/index_background.jpg\") fixed no-repeat right top;\r\n    background-size: cover;\r\n}\r\n\r\n#header {\r\n\tbackground-color: #FFFFFF;\r\n\tmin-height: $header-height;\r\n\tpadding: 5px 20px;\r\n}\r\n\r\n.jumbotron {\r\n\tmargin-top: $header-height;\r\n}"
+	],
+	"mappings": ";AAEA,AAAA,IAAI,CAAC;EACD,UAAU,EAAE,KAAK,CAAC,kCAAG,CAAgC,KAAK,CAAC,SAAS,CAAC,KAAK,CAAC,GAAG;EAC9E,eAAe,EAAE,KAAM;CAC1B;;;AAED,AAAA,OAAO,CAAC;EACP,gBAAgB,EAAE,OAAQ;EAC1B,UAAU,EATK,IAAI;EAUnB,OAAO,EAAE,QAAS;CAClB;;;AAED,AAAA,UAAU,CAAC;EACV,UAAU,EAdK,IAAI;CAenB",
+	"names": []
+}

@@ -1,0 +1,95 @@
+/*
+	Prayer point app
+	Author: Ayodeji Oyewole
+	Version: 1.0.0
+*/
+/* BASE - Variables, Mixins, Base styles */
+body {
+  background: white url("images/index_background.jpg") fixed no-repeat right top;
+  background-size: cover;
+}
+
+.mrg-btm-zero {
+  margin-bottom: 0;
+}
+
+.bg-color-transparent {
+  background-color: transparent;
+}
+
+.pacifico {
+  font-family: 'Pacifico', Helvetica, Arial, sans-serif !important;
+}
+
+.text-white {
+  color: #FFFFFF !important;
+}
+
+.text-theme {
+  color: #485663 !important;
+}
+
+/* LAYOUTS - Page layout styles */
+#header {
+  background-color: #FFFFFF;
+  min-height: 80px;
+  padding: 5px 90px;
+}
+
+#header .navbar-brand {
+  font-size: 36px;
+  line-height: 38px;
+  color: #485663;
+}
+
+#header .navbar-brand:hover {
+  color: #7a92a8;
+}
+
+#header .collapse {
+  margin-top: 10px !important;
+  font-size: 12px;
+}
+
+#header button {
+  color: #485663;
+  background-color: #FFFFFF;
+  border: 2px solid #485663;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 9px;
+  border-radius: 16px;
+}
+
+#header button:hover {
+  color: #FFFFFF;
+  background-color: #485663;
+}
+
+.jumbotron {
+  margin-top: 80px;
+  min-height: calc(100% - 80px);
+}
+
+.jumbotron h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* MODULES - Page specific styles */
+.btn-index {
+  border-radius: 30px !important;
+  background-color: #485663 !important;
+  border: 2px solid #485663;
+  font-size: 18px !important;
+  color: #FFFFFF !important;
+  margin: 20px 15px 15px;
+  float: none;
+  line-height: 25px !important;
+  padding: 13px 24px 11px !important;
+}
+
+.btn-index:hover {
+  background-color: #333d47 !important;
+  border: 2px solid #333d47;
+}

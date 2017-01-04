@@ -1,0 +1,35 @@
+#header {
+	background-color: #FFFFFF;
+	min-height: $header-height;
+	padding: 5px 90px;
+	
+	.navbar-brand {
+		font-size: 36px;
+		line-height: 38px;
+		color: $theme-color;
+	}
+	
+	.navbar-brand:hover {
+		color: $theme-color * 1.7;
+	}
+	
+	.collapse {
+		margin-top: 10px !important;
+		font-size: 12px;
+	}
+	
+	button {
+		color: $theme-color;
+		background-color: #FFFFFF;
+		border: 2px solid $theme-color;
+		font-weight: bold;
+		font-size: 12px;
+		margin-top: 9px;
+		border-radius: 16px;
+	}
+	
+	button:hover {
+		color: #FFFFFF;
+		background-color: $theme-color;
+	}
+}
