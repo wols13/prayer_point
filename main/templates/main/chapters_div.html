@@ -1,0 +1,34 @@
+{% load static %}
+<script>
+    function updateResults() {
+    var book = document.getElementById("query_book").value;
+    var chapter = document.getElementById("query_chapter").value;
+    var verse = document.getElementById("query_verse").value;
+    $.ajax({
+            type: "GET",
+            url: "{% url 'prayer_point_by_scripture' %}",
+            data: {'book': book, 'chapter': chapter, 'verse': verse}
+        })
+        .done(function(response) {
+            document.getElementById("prayer_point_results").innerHTML = response;
+        });
+}
+</script>
+<div style="overflow: hidden; position: absolute; top: 80px; left: 0; background-color: white; height: calc(100% - 80px); width: 30%; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);">
+    <div style="position: absolute; top: 0; left:0; background-color: #485663; width: 100%; height: 60px; padding: 15px;">
+        <select id="query_book" onchange="updateResults()" style="height: 30px; width: 160px; border-radius: 5px; padding: 0px 10px;">
+        {% for book in books %}
+                <option value="{{ book.id }}">{{ book.name }}</option>
+        {% endfor %}
+        </select>
+        <select id="query_chapter" onchange="updateResults()" style="height: 30px; width: 70px; margin-left: 5px; border-radius: 5px; padding: 0px 10px;">
+            <option value="0">--</option>
+        </select>
+        <select id="query_verse" onchange="updateResults()" style="height: 30px; width: 70px; margin-left: 5px; border-radius: 5px; padding: 0px 10px;">
+            <option value="0">--</option>
+        </select>
+    </div>
+    <div id="prayer_point_results" style="margin-top: 60px; height: calc(100% - 60px); background-color: white;"></div>
+</div>
+<div style="position: absolute; bottom: 45%; left: 40%; background-color: white; height: 25%; width: 50%; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);"></div>
+<div style="position: absolute; top: 55%; left: 40%; background-color: #ebebeb; height: 25%; width: 50%; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); border-top: 1px solid rgb(150, 150, 150);"></div>
