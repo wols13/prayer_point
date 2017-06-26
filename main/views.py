@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Book, Prayer_point
+from .models import Book, PrayerPoint
 
 # Create your views here.
 
@@ -33,18 +33,32 @@ def prayer_point_by_scripture(request):
     try:
         if chapter != 0:
             if verse != 0:
-                prayer_points = Prayer_point.objects.filter(book=book, chapter=chapter, verse=verse)
+                prayer_points = PrayerPoint.objects.filter(book=book, chapter=chapter, verse=verse)
             else:
-                prayer_points = Prayer_point.objects.filter(book=book, chapter=chapter)
+                prayer_points = PrayerPoint.objects.filter(book=book, chapter=chapter)
         else:
-            prayer_points = Prayer_point.objects.filter(book=book)
-    except Prayer_point.DoesNotExist:
-        prayer_point = None
+            prayer_points = PrayerPoint.objects.filter(book=book)
+    except PrayerPoint.DoesNotExist:
+        prayer_points = None
 
-    context = {'prayer_points': prayer_points}
+    context = {'prayer_points': prayer_points,}
     return HttpResponse(prayer_points_list.render(context, request))
 
 
 def sorted_by_category(request):
     headers_template = loader.get_template('main/headers.html')
     return HttpResponse(headers_template.render({}, request))
+
+
+def number_of_chapters(request):
+    book = int(request.GET['book'])
+
+    chapter_drop_down = loader.get_template('main/chapter_drop_down.html')
+    try:
+        result = Book.objects.filter(id=book)
+        result = result[0].no_of_chapters
+    except Book.DoesNotExist:
+        result = 0
+
+    context = {'chapter_range': range(1, result + 1)}
+    return HttpResponse(chapter_drop_down.render(context, request))

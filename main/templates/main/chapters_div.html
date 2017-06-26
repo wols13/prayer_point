@@ -1,34 +1,84 @@
 {% load static %}
+<script type="text/javascript" src="{% static 'main/scripts/bible_books_array.js' %}"></script>
 <script>
+    function updateChapters(){
+        var book = document.getElementById("query_book").value;
+        $.ajax({
+            type: "GET",
+            url: "{% url 'number_of_chapters' %}",
+            data: {'book': book}
+        })
+        .done(function(response) {
+            document.getElementById("query_chapter").innerHTML = response;
+            document.getElementById("query_verse").innerHTML = "<option value=\"0\">--</option>";
+            updateResults();
+        });
+    }
+
     function updateResults() {
-    var book = document.getElementById("query_book").value;
-    var chapter = document.getElementById("query_chapter").value;
-    var verse = document.getElementById("query_verse").value;
-    $.ajax({
+        var book = document.getElementById("query_book").value;
+        var chapter = document.getElementById("query_chapter").value;
+        var verse = document.getElementById("query_verse").value;
+        $.ajax({
             type: "GET",
             url: "{% url 'prayer_point_by_scripture' %}",
             data: {'book': book, 'chapter': chapter, 'verse': verse}
         })
         .done(function(response) {
             document.getElementById("prayer_point_results").innerHTML = response;
+            var spans = $(".search_result_span");
+            for (var i = 0; i < spans.length; i++){
+                var temp = spans[i].innerHTML;
+                var id = spans[i].id.split("search_result_span_")[1];
+                spans[i].innerHTML = books_array[id] + temp;
+            }
         });
-}
+    }
+
+    function get_and_show_scripture(pp){
+        var class_name = pp.className.split(" ")[1];
+        var book = class_name.split("-")[0];
+        var chapter = class_name.split("-")[1];
+        var verse = class_name.split("-")[2];
+        $.ajax({
+                type: "GET",
+                url: "http://bible-api.com/" + books_array[book] + " " + chapter + ":" + verse,
+                data: {'translation': "kjv"}
+        })
+        .done(function(response) {
+            document.getElementById("scripture_box").innerHTML = response.text;
+            $("#pp_box").html($("#" + pp.id).children("p").html());
+        });
+    }
+
+    $(document).ready(function() {
+        updateChapters();
+        $("#query_book").change(function() {
+            updateChapters();
+        });
+        $("#query_chapter").change(function() {
+            updateResults();
+        });
+        $("#query_verse").change(function() {
+            updateResults();
+        });
+    });
 </script>
-<div style="overflow: hidden; position: absolute; top: 80px; left: 0; background-color: white; height: calc(100% - 80px); width: 30%; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);">
-    <div style="position: absolute; top: 0; left:0; background-color: #485663; width: 100%; height: 60px; padding: 15px;">
-        <select id="query_book" onchange="updateResults()" style="height: 30px; width: 160px; border-radius: 5px; padding: 0px 10px;">
+<div style="overflow: hidden; position: absolute; top: 80px; left: 0; background-color: white; height: calc(100% - 80px); width: 35%; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);">
+    <div style="position: absolute; top: 0; left:0; background-color: #485663; width: 100%; height: 60px; padding: 3.1%;">
+        <select id="query_book" style="border: 0; border-right: 1px solid rgb(150, 150, 150); height: 30px; width: 35%; border-top-left-radius: 5px; border-bottom-left-radius: 5px; padding: 0px 10px;">
         {% for book in books %}
                 <option value="{{ book.id }}">{{ book.name }}</option>
         {% endfor %}
-        </select>
-        <select id="query_chapter" onchange="updateResults()" style="height: 30px; width: 70px; margin-left: 5px; border-radius: 5px; padding: 0px 10px;">
-            <option value="0">--</option>
-        </select>
-        <select id="query_verse" onchange="updateResults()" style="height: 30px; width: 70px; margin-left: 5px; border-radius: 5px; padding: 0px 10px;">
-            <option value="0">--</option>
+        </select><select id="query_chapter" style="border: 0; border-right: 1px solid rgb(150, 150, 150); height: 30px; width: 15%; padding: 0px 10px;">
+            <option value="1">1</option>
+        </select><select id="query_verse" style="border: 0; border-right: 1px solid rgb(150, 150, 150); height: 30px; width: 15%; padding: 0px 10px;">
+            <option value="1">1</option>
+        </select><select id="query_category" style="border: 0; height: 30px; width: 34%; padding: 0px 10px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+            <option value="0">Provision</option>
         </select>
     </div>
     <div id="prayer_point_results" style="margin-top: 60px; height: calc(100% - 60px); background-color: white;"></div>
 </div>
-<div style="position: absolute; bottom: 45%; left: 40%; background-color: white; height: 25%; width: 50%; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);"></div>
-<div style="position: absolute; top: 55%; left: 40%; background-color: #ebebeb; height: 25%; width: 50%; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); border-top: 1px solid rgb(150, 150, 150);"></div>
+<div id="scripture_box"></div>
+<div id="pp_box"></div>

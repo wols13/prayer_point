@@ -1,6 +1,6 @@
 {% for pp in prayer_points %}
-    <div style="padding: 8px 16px; font-size: 14px; width: 100%; max-height: 102px; height: auto; overflow: hidden; border-bottom: 1px solid rgb(200, 200, 200);">
-        <span><span style="font-weight: bold;">{{ pp.title }}</span><span style="float: right;">{{ pp.book }} {{ pp.chapter }}:{{ pp.verse}}</span></span><br>
-        <span>{{ pp.content }}</span>
+    <div onclick="get_and_show_scripture(this)" id="search_result_{{ forloop.counter }}" class="search_result_item {{ pp.book }}-{{ pp.chapter }}-{{ pp.verse}}">
+        <span><span style="font-weight: bold;">{{ pp.title }}</span><span id="search_result_span_{{ pp.book }}" class="search_result_span" style="float: right;"> {{ pp.chapter }}:{{ pp.verse}}</span></span><br>
+        <p style="max-height: 58px; overflow: hidden;">{{ pp.content }}</p>
     </div>
 {% endfor %}
