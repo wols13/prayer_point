@@ -70,7 +70,7 @@ body {
 
 .jumbotron {
   margin-top: 80px;
-  min-height: calc(100% - 80px);
+  min-height: calc(100% - 120px);
 }
 
 .jumbotron h1 {
