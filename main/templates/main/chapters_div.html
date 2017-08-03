@@ -42,7 +42,7 @@
         var verse = class_name.split("-")[2];
         $.ajax({
                 type: "GET",
-                url: "http://bible-api.com/" + books_array[book] + " " + chapter + ":" + verse,
+                url: "https://bible-api.com/" + books_array[book] + " " + chapter + ":" + verse,
                 data: {'translation': "kjv"}
         })
         .done(function(response) {
