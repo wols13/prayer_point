@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Book, PrayerPoint
+from .models import Book, PrayerPoint, Category
 
 # Create your views here.
 
@@ -17,8 +17,10 @@ def sorted_by_scripture(request):
     chapters_div = loader.get_template('main/chapters_div.html')
 
     books = Book.objects.order_by('id')
+    categories = Category.objects.order_by('name')
     context = {
         'books': books,
+        'categories': categories,
     }
 
     return HttpResponse(headers_template.render({}, request) + chapters_div.render(context, request))

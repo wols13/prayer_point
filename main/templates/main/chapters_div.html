@@ -66,16 +66,20 @@
 </script>
 <div style="overflow: hidden; position: absolute; top: 80px; left: 0; background-color: white; height: calc(100% - 80px); width: 35%; box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);">
     <div style="position: absolute; top: 0; left:0; background-color: #485663; width: 100%; height: 60px; padding: 3.1%;">
-        <select id="query_book" style="border: 0; border-right: 1px solid rgb(150, 150, 150); height: 30px; width: 35%; border-top-left-radius: 5px; border-bottom-left-radius: 5px; padding: 0px 10px;">
+        <select id="query_book" style="border: 0; border-right: 1px solid rgb(150, 150, 150); height: 30px; width: 35%; border-radius: 0; border-top-left-radius: 5px; border-bottom-left-radius: 5px; padding: 0px 10px;">
         {% for book in books %}
                 <option value="{{ book.id }}">{{ book.name }}</option>
         {% endfor %}
-        </select><select id="query_chapter" style="border: 0; border-right: 1px solid rgb(150, 150, 150); height: 30px; width: 15%; padding: 0px 10px;">
+        </select><select id="query_chapter" style="border-radius: 0; border: 0; border-right: 1px solid rgb(150, 150, 150); height: 30px; width: 15%; padding: 0px 10px;">
             <option value="1">1</option>
-        </select><select id="query_verse" style="border: 0; border-right: 1px solid rgb(150, 150, 150); height: 30px; width: 15%; padding: 0px 10px;">
+        </select><select id="query_verse" style="border-radius: 0; border: 0; border-right: 1px solid rgb(150, 150, 150); height: 30px; width: 15%; padding: 0px 10px;">
             <option value="1">1</option>
-        </select><select id="query_category" style="border: 0; height: 30px; width: 34%; padding: 0px 10px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
-            <option value="0">Provision</option>
+        </select><select id="query_category" style="border: 0; height: 30px; width: 34%; padding: 0px 10px; border-radius: 0; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+            <option value="0">Choose Category</option>
+            <option value="0">All</option>
+        {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
         </select>
     </div>
     <div id="prayer_point_results" style="margin-top: 60px; height: calc(100% - 60px); background-color: white;"></div>

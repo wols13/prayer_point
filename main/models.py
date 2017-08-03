@@ -5,7 +5,13 @@ from django.db import models
 
 class Book(models.Model):
     name = models.CharField(max_length=20)
-    no_of_chapters = models.IntegerField(default=1)
+    no_of_chapters = models.IntegerField()
+
+
+class Chapter(models.Model):
+    book_id = models.IntegerField()
+    chapter_number = models.IntegerField()
+    no_of_verses = models.IntegerField()
 
 
 class PrayerPoint(models.Model):
@@ -26,5 +32,4 @@ class Scripture(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
-    description = models.CharField(max_length=512)
-    sid_list = models.ManyToManyField(Scripture)
+    description = models.CharField(max_length=512, default="no_desc")
