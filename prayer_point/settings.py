@@ -25,7 +25,7 @@ SECRET_KEY = 'yx_bv0x!zy3zv1&xn@tfl5z$cjyvgaq%3@^(zbwx9hupq@&^ft'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["prayer-point.herokuapp.com"]
 
 
 # Application definition
