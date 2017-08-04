@@ -33,3 +33,10 @@ class Scripture(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=512, default="no_desc")
+
+class Bible(models.Model):
+    id = models.IntegerField(primary_key=True)
+    b = models.IntegerField()
+    c = models.IntegerField()
+    v = models.IntegerField()
+    t = models.TextField()

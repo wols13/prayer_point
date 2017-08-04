@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Book, PrayerPoint, Category
+from .models import Book, PrayerPoint, Category, Bible
 
 # Create your views here.
 
@@ -64,3 +64,28 @@ def number_of_chapters(request):
 
     context = {'chapter_range': range(1, result + 1)}
     return HttpResponse(chapter_drop_down.render(context, request))
+
+
+def get_scripture(request):
+    book = int(request.GET['book'])
+    chapter = int(request.GET['chapter'])
+    verse = int(request.GET['verse'])
+
+    try:
+        result = Bible.objects.filter(b=book, c=chapter, v=verse)
+        result = result[0].t
+    except Bible.DoesNotExist:
+        result = ""
+
+    return HttpResponse(result)
+
+
+
+
+
+
+
+
+
+
+

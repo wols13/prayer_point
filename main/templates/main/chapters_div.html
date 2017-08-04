@@ -42,11 +42,11 @@
         var verse = class_name.split("-")[2];
         $.ajax({
                 type: "GET",
-                url: "https://bible-api.com/" + books_array[book] + " " + chapter + ":" + verse,
-                data: {'translation': "kjv"}
+                url: "{% url 'get_scripture' %}",
+                data: {'book': book, 'chapter': chapter, 'verse': verse}
         })
         .done(function(response) {
-            document.getElementById("scripture_box").innerHTML = response.text;
+            document.getElementById("scripture_box").innerHTML = response;
             $("#pp_box").html($("#" + pp.id).children("p").html());
         });
     }
