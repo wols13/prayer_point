@@ -2,6 +2,7 @@
 <script type="text/javascript" src="{% static 'main/scripts/bible_books_array.js' %}"></script>
 <script>
     function updateChapters(){
+        document.getElementById("query_chapter").innerHTML = "<option value=\"0\">--</option>";
         var book = document.getElementById("query_book").value;
         $.ajax({
             type: "GET",

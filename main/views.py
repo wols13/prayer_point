@@ -47,9 +47,15 @@ def prayer_point_by_scripture(request):
     return HttpResponse(prayer_points_list.render(context, request))
 
 
-def sorted_by_category(request):
+def add_prayer_point(request):
     headers_template = loader.get_template('main/headers.html')
-    return HttpResponse(headers_template.render({}, request))
+    add_pp_template = loader.get_template('main/add_prayer_point.html')
+
+    books = Book.objects.order_by('id')
+    context = {
+        'books': books,
+    }
+    return HttpResponse(headers_template.render({}, request) + add_pp_template.render(context, request))
 
 
 def number_of_chapters(request):

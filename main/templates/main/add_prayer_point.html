@@ -1,0 +1,68 @@
+{% load static %}
+<script type="text/javascript" src="{% static 'main/scripts/add_pp_scripts.js' %}"></script>
+<div id="add_pp_container">
+    <p id="add_pp_header">Add a prayer point</p>
+    <form action="" method="post">
+        <div id="add_pp_title_container">
+            <label for="add_pp_title">Title: </label>
+            <input id="add_pp_title" type="text" name="add_pp_title" maxlength="512" onkeyup="updateTitleCount()" required />
+            <span id="add_pp_title_count_wrap"><span id="add_pp_title_count">512</span><span> characters left</span></span>
+        </div>
+        <div id="add_pp_passages_container">
+            <div class="add_pp_passage" >
+                <div id="add_pp_passage_without_table">
+                    <label for="add_pp_book">Passages: </label>
+                    <select id="add_pp_book" name="add_pp_book" class="add_pp_book_dropdown" required>
+                        <option value="0">Book</option>
+                        {% for book in books %}
+                                <option value="{{ book.id }}">{{ book.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <select id="add_pp_chapter" name="add_pp_chapter" class="add_pp_chapter_dropdown" required>
+                        <option value="0">Chapter</option>
+                    </select>
+                    <span id="add_pp_verse" class="inline-block">Verse <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                </div>
+               <table id="add_pp_verse_table">
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="1" value="1"> 1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="add_pp_content_container">
+            <label for="add_pp_content">Content: </label>
+            <textarea id="add_pp_content" name="add_pp_content" maxlength="512" onkeyup="updateContentCount()" required></textarea>
+            <span id="add_pp_content_count_wrap"><span id="content_char_count">512</span><span> characters left</span></span>
+        </div>
+        <div id="add_pp_category_container">
+            <label for="add_pp_category_table" >Category: </label>
+            <span id="add_pp_category_hint">Select all that apply</span>
+            <table id="add_pp_category_table">
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" name="consecration" value="Consecration"> Consecration</td>
+                        <td><input type="checkbox" name="consecration" value="Family"> Family</td>
+                        <td><input type="checkbox" name="consecration" value="Nation/Land"> Nation/Land</td>
+                        <td><input type="checkbox" name="consecration" value="Warfare"> Warfare</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="consecration" value="Direction"> Direction</td>
+                        <td><input type="checkbox" name="consecration" value="Favour"> Favour</td>
+                        <td><input type="checkbox" name="consecration" value="Protection"> Protection</td>
+                        <td><input type="checkbox" name="consecration" value="Wealth"> Wealth</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="consecration" value="Encouragement"> Encouragement</td>
+                        <td><input type="checkbox" name="consecration" value="Health"> Health</td>
+                        <td><input type="checkbox" name="consecration" value="Provision"> Provision</td>
+                        <td><input type="checkbox" name="consecration" value="Worship"> Worship</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button id="add_pp_submit_button">Submit for approval <i class="fa fa-check" aria-hidden="true"></i></button>
+    </form>
+</div>

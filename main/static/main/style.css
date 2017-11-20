@@ -8,6 +8,7 @@ body {
   background: white url("images/index_background.jpg") fixed no-repeat right top;
   background-size: cover;
   font-family: "CharisSILRegular", Georgia, "Times New Roman", Times, serif;
+  color: #485663;
 }
 
 .mrg-btm-zero {
@@ -35,7 +36,7 @@ body {
   background-color: #FFFFFF;
   min-height: 80px;
   padding: 5px 90px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 #header .navbar-brand {
@@ -162,4 +163,185 @@ body {
     width: 55%;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
     border-top: 1px solid rgb(150, 150, 150);
+}
+
+/**************************************************
+           ADD PRAYER POINTS
+***************************************************/
+
+.inline-block {
+    display: inline-block;
+}
+
+#add_pp_container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20%;
+    width: 60%;
+    background-color: white;
+    font-size: 14px;
+    padding: 35px 60px;
+    overflow: auto;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+#add_pp_container label {
+    float: left;
+    width: 100px
+}
+
+#add_pp_container label, #add_pp_container select, #add_pp_container button {
+    height: 30px;
+    font-size: 14px;
+}
+
+#add_pp_header {
+    font-size: 26px;
+    font-weight: bold;
+    width: 100%;
+    border-bottom: 1px solid;
+    margin-bottom: 25px;
+}
+
+#add_pp_title_container {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+
+#add_pp_title {
+    border-radius: 5px;
+    float: left;
+    border: 1px solid rgba(72, 86, 99, 0.7);
+    height: 30px;
+    width: calc(100% - 250px);
+    font-size: 14px;
+    padding: 0 15px;
+}
+
+#add_pp_title_count_wrap {
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+#add_pp_passages_container {
+    margin-top: 10px;
+    width: 100%;
+}
+
+#add_pp_passage_without_table {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+
+.add_pp_book_dropdown {
+    display: inline-block;
+    float: left;
+    width: 150px;
+    background-color: rgba(72, 86, 99, 0.1);
+    border: 1px solid rgba(72, 86, 99, 0.7);
+    cursor: pointer;
+}
+
+.add_pp_chapter_dropdown {
+    display: inline-block;
+    float: left;
+    width: 11%;
+    min-width: 80px;
+    background-color: rgba(72, 86, 99, 0.1);
+    border: 1px solid rgba(72, 86, 99, 0.7);
+    border-right: 0;
+    border-left: 0;
+    cursor: pointer;
+}
+
+#add_pp_verse {
+    width: 11%;
+    min-width: 80px;
+    height: 30px;
+    float: left;
+    background-color: rgba(72, 86, 99, 0.1);
+    border: 1px solid rgba(72, 86, 99, 0.7);
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#add_pp_verse i {
+    position: relative;
+    float: right;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+}
+
+#add_pp_verse_table {
+    display: none;
+    table-layout: fixed;
+    margin: 10px 0 0 100px;
+    border: 1px solid rgba(72, 86, 99, 0.7);
+}
+
+#add_pp_content_container {
+    margin-top: 10px;
+    height: 90px;
+}
+
+#add_pp_content_container label {
+    float: left;
+    line-height: 90px;
+}
+
+#add_pp_content {
+    padding: 4px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(72, 86, 99, 0.7);
+    width: calc(100% - 250px);
+    height: 90px;
+}
+
+#add_pp_content_count_wrap {
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+#add_pp_category_container {
+    margin-top: 10px;
+}
+
+#add_pp_category_table {
+    border-radius: 5px;
+    padding: 15px 0 10px 10px;
+    border-spacing: 2px;
+    border-collapse: separate;
+    text-align: left;
+    table-layout: fixed;
+    border: 1px solid rgba(72, 86, 99, 0.7);
+    margin-top: 15px;
+    margin-left: 100px;
+    width: calc(100% - 135px);
+    font-size: 14px;
+}
+
+#add_pp_category_hint {
+    position: absolute;
+    background-color: white;
+    margin: -10px 0 0 10px;
+    padding: 0 10px;
+}
+
+#add_pp_submit_button {
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: rgb(236, 236, 236);
+    cursor: pointer;
+    border: 1px solid rgb(216, 216, 216);
+}
+
+#add_pp_submit_button:hover {
+    color: rgb(236, 236, 236);
+    background-color: #485663;
+    border: 1px solid #323C46;
 }
