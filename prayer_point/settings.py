@@ -25,7 +25,7 @@ SECRET_KEY = 'yx_bv0x!zy3zv1&xn@tfl5z$cjyvgaq%3@^(zbwx9hupq@&^ft'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "prayer-point.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "prayer-point.herokuapp.com"]
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +120,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

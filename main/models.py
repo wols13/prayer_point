@@ -1,42 +1,12 @@
 from django.db import models
 
-# Create your models here.
-
-
-class Book(models.Model):
-    name = models.CharField(max_length=20)
-    no_of_chapters = models.IntegerField()
-
-
-class Chapter(models.Model):
-    book_id = models.IntegerField()
-    chapter_number = models.IntegerField()
-    no_of_verses = models.IntegerField()
-
-
 class PrayerPoint(models.Model):
-    book = models.IntegerField(default=1)
-    chapter = models.IntegerField(default=1)
-    verse = models.IntegerField(default=1)
-    title = models.CharField(max_length=512, default="no_desc")
-    content = models.TextField(max_length=512, default="no_content")
-
-
-class Scripture(models.Model):
-    book = models.CharField(max_length=20)
-    chapter = models.IntegerField()
-    verses = models.IntegerField()
-    content = models.TextField()
-    pid_list = models.ManyToManyField(PrayerPoint)
+    bible_ref = models.CharField(max_length=64, default="No Bible ref")
+    scripture = models.TextField(max_length=2048, default="No scripture")
+    content = models.TextField(max_length=2048, blank=False)
+    category = models.TextField(max_length=128, blank=False)
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=512, default="no_desc")
-
-class Bible(models.Model):
-    id = models.IntegerField(primary_key=True)
-    b = models.IntegerField()
-    c = models.IntegerField()
-    v = models.IntegerField()
-    t = models.TextField()
+    cat_id = models.CharField(max_length=3, blank=False, primary_key=True)
+    name = models.CharField(max_length=32, blank=False)

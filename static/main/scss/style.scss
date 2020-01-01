@@ -1,0 +1,21 @@
+/*
+	Prayer point app
+	Author: Ayodeji Oyewole
+	Version: 1.0.0
+*/
+
+/* BASE - Variables, Mixins, Base styles */
+
+@import 'base/_variables';
+@import 'base/_mixins';
+@import 'base/_base';
+
+
+/* LAYOUTS - Page layout styles */
+
+@import 'layouts/_header';
+@import 'layouts/_jumbotron';
+
+/* MODULES - Page specific styles */
+
+@import 'modules/_index'

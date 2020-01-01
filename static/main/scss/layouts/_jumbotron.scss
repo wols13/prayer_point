@@ -1,0 +1,9 @@
+.jumbotron {
+	margin-top: $header-height;
+	min-height: calc(100% - #{$header-height});
+	
+	h1 {
+		font-size: 40px;
+		font-weight: bold;
+	}
+}

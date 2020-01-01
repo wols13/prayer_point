@@ -1,15 +1,10 @@
 from django.contrib import admin
+from .models import *
+from import_export.admin import ImportExportActionModelAdmin
 
-# Register your models here.
 
-from .models import Book
-from .models import Chapter
-from .models import PrayerPoint
-from .models import Scripture
-from .models import Category
+class PrayerPointAdmin(ImportExportActionModelAdmin):
+	pass
 
-admin.site.register(Book)
-admin.site.register(Chapter)
-admin.site.register(PrayerPoint)
-admin.site.register(Scripture)
+admin.site.register(PrayerPoint, PrayerPointAdmin)
 admin.site.register(Category)

@@ -1,0 +1,16 @@
+.btn-index {
+	border-radius: 30px !important;
+	background-color: $theme-color !important;
+	border: 2px solid $theme-color;
+	font-size: 18px !important;
+	color: #FFFFFF !important;
+	margin: 20px 15px 15px;
+	float: none;
+	line-height: 25px !important;
+	padding: 13px 24px 11px !important;
+}
+
+.btn-index:hover {
+	background-color: $theme-color / 1.4 !important;
+	border: 2px solid $theme-color / 1.4;
+}
