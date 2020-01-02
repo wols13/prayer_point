@@ -1,29 +1,82 @@
 {% load static %}
 <script>
+    var page_no;
+    var selected_pp = "";
+
     function updateResultsByCategory() {
+        $("#prayer_point_results").empty();
+        $("#new_results").empty();
         var category = document.getElementById("query_category").value;
         $.ajax({
             type: "GET",
             url: "{% url 'prayer_point_by_category' %}",
-            data: {'category': category}
+            data: {'category': category, 'page_no': page_no}
         })
         .done(function(response) {
-            document.getElementById("prayer_point_results").innerHTML = response;
+            if (response.length != 0){
+                $("#new_results").html(response);
+                $("#load_next_page").css('display', 'flex');
+                $("#scroll_top_btn").css('display', 'flex');
+                $("#load_more_btn").show();
+            }
         });
     }
 
     function get_and_show_scripture(pp){
+        if (selected_pp != "") $(selected_pp).removeClass("selected_pp");
+        selected_pp = "#" + pp.id;
+        $(selected_pp).addClass("selected_pp");
+
         var id = pp.id.split("search_result_")[1];
         $("#scripture_content").html( $("#scripture_" + id).html() );
         $("#scripture_ref").html( $("#bible_ref_" + id).html() );
         $("#pp_box").html($("#" + pp.id).children("p").html());
     }
 
+    function load_next_page(){
+        var category = document.getElementById("query_category").value;
+        page_no = page_no + 1;
+
+        $.ajax({
+            type: "GET",
+            url: "{% url 'prayer_point_by_category' %}",
+            data: {'category': category, 'page_no': page_no}
+        })
+        .done(function(response) {
+            if (response.length == 0){
+                $("#load_more_btn").hide();
+                $("#result_end").show();
+            } else {
+                $("#prayer_point_results").append( $("#new_results").html() );
+                $("#new_results").html(response);
+                $("#load_more_btn").show();
+            }
+        });
+    }
+
+    function resetPageLoadingSection() {
+        page_no = 1;
+        $("#load_next_page").hide();
+        $("#scroll_top_btn").hide();
+        $("#load_more_btn").hide();
+        $("#result_end").hide();
+    }
+
     $(document).ready(function() {
+        resetPageLoadingSection();
         updateResultsByCategory();
 
         $("#query_category").change(function() {
+            resetPageLoadingSection();
             updateResultsByCategory();
+        });
+
+        $("#load_more_btn").click(function(){
+            load_next_page();
+        });
+
+        $("#scroll_top_btn").click(function(){
+            $("#result_container").animate({scrollTop:0}, 1000);
         });
     });
 </script>
@@ -37,7 +90,15 @@
         {% endfor %}
         </select>
     </div>
-    <div id="prayer_point_results" style="overflow: auto; margin-top: 60px; height: calc(100% - 60px); background-color: white;"></div>
+    <div id="result_container">
+        <div id="prayer_point_results"></div>
+        <div id="new_results"></div>
+        <div id="load_next_page">
+            <button id="load_more_btn">Load more</button>
+            <span id="result_end">· End of list ·</span>
+        </div>
+        <button id="scroll_top_btn"><i class="fa fa-chevron-up" style="margin-top: -3px;"></i></button>
+    </div>
 </div>
 <div id="scripture_box"><p>
     <span id="scripture_ref"></span><br>

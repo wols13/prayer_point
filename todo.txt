@@ -1,0 +1,11 @@
+Bible versions
+Clean up css
+Switch all js to jquery
+Clean up all jquery
+Re-write all static text
+Clear all warnings in console
+Make all media local, save locally
+Sort by: book, 
+Key events, up, down, left, right
+Downloading feature
+PP views counter

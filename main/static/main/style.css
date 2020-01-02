@@ -126,6 +126,10 @@ body {
     background-color: rgba(72, 86, 99, 0.1);
 }
 
+.selected_pp {
+    background-color: rgba(72, 86, 99, 0.1); 
+}
+
 #scripture_box {
     overflow: auto;
     text-align: center;
@@ -179,6 +183,65 @@ body {
     font-size: 14px;
     font-weight: bold;
 }
+
+#load_next_page {
+    display: none;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #ebebeb;
+}
+
+#result_end {
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#load_more_btn {
+    display: none;
+    padding: 7px 20px;
+    border-radius: 3px;
+    border: 1px solid #404d59;
+    background-color: #485663;
+    color: white;
+}
+
+#load_more_btn:hover {
+    background-color: #2b333b;
+}
+
+#result_container {
+    overflow: auto;
+    margin-top: 60px;
+    height: calc(100% - 60px);
+    background-color: white;
+}
+
+#scroll_top_btn {
+    display: none;
+    position: absolute;
+    bottom: 35px;
+    right: 30px;
+    height: 30px;
+    width: 30px;
+    color: white;
+    background-color: #485663;
+    border: 1px solid #404d59;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+#scroll_top_btn:hover {
+    background-color: #2b333b;
+}
+
 
 /**************************************************
            ADD PRAYER POINTS

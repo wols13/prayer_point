@@ -1,7 +1,7 @@
 {% for pp in prayer_points %}
-    <div onclick="get_and_show_scripture(this)" id="search_result_{{ forloop.counter }}" class="search_result_item">
+    <div onclick="get_and_show_scripture(this)" id="search_result_{{ pp.id }}" class="search_result_item">
         <p style="max-height: 58px; overflow: hidden; margin: 0;">{{ pp.content }}</p>
-        <p id="bible_ref_{{ forloop.counter }}" class="search_result_span">{{ pp.bible_ref }}</p>
-        <span id="scripture_{{ forloop.counter }}" class="scripture">{{ pp.scripture }}</span>
+        <p id="bible_ref_{{ pp.id }}" class="search_result_span">{{ pp.bible_ref }}</p>
+        <span id="scripture_{{ pp.id }}" class="scripture">{{ pp.scripture }}</span>
     </div>
 {% endfor %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from .models import PrayerPoint, Category
 
 
@@ -28,10 +29,15 @@ def prayer_point_by_category(request):
     prayer_points_list = loader.get_template('main/prayer_points_list.html')
     try:
         prayer_points = PrayerPoint.objects.filter(category__icontains=category)
+        paginator = Paginator(prayer_points, 20, orphans=4)
+        try:
+            page = paginator.page(request.GET['page_no'])
+            context = {'prayer_points': page,}
+        except (InvalidPage, EmptyPage) as e:
+            context = {'prayer_points': None,}
     except PrayerPoint.DoesNotExist:
-        prayer_points = None
+        context = {'prayer_points': None,}
 
-    context = {'prayer_points': prayer_points,}
     return HttpResponse(prayer_points_list.render(context, request))
 
 
