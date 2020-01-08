@@ -9,3 +9,5 @@ Sort by: book,
 Key events, up, down, left, right
 Downloading feature
 PP views counter
+
+resource page

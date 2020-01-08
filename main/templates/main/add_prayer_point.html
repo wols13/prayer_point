@@ -14,9 +14,6 @@
                     <label for="add_pp_book">Passages: </label>
                     <select id="add_pp_book" name="add_pp_book" class="add_pp_book_dropdown" required>
                         <option value="0">Book</option>
-                        {% for book in books %}
-                                <option value="{{ book.id }}">{{ book.name }}</option>
-                        {% endfor %}
                     </select>
                     <select id="add_pp_chapter" name="add_pp_chapter" class="add_pp_chapter_dropdown" required>
                         <option value="0">Chapter</option>
