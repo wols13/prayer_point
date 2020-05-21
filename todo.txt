@@ -1,13 +1,49 @@
-Bible versions
+============================
+TO-DO's left to go LIVE!!
+============================
+Set python interpreter to 3.x for PyCharm
+Restart model and db with max script len at 1024 and max content length at 512
+Downloading & Printing feature
+Resource page
+Help page
+Contact us page
+    Add link to add pp
+===
+Clean up file names and delete unused files
+Handle all AJAX failures properly
+Verify and fix responsiveness on popular screen sizes
+Store everything locally
 Clean up css
 Switch all js to jquery
 Clean up all jquery
-Re-write all static text
+Proof read all static text
 Clear all warnings in console
-Make all media local, save locally
-Sort by: book, 
-Key events, up, down, left, right
-Downloading feature
-PP views counter
+Upload latest prayer points
+Change setting DEBUG = False
+how to hide password from settings file using environment variables or https://pypi.org/project/python-decouple/
+============================
 
-resource page
+
+
+
+
+
+
+============================
+Future features
+============================
+Hint to choose a category on blank view pp page
+Bible versions
+Sort by: book
+Key events, up, down, left, right
+PP views counter
+Advanced filter - multiple categories, author
+On hover over HOME menu, show drop down with buttons: Home, View PP, Add PP
++ Github issues
+Once email volumes get large enough, switch to proper emailing service
+Multiple website languages
+Track usage with timestamp and all e.g prayer point individual views, category views, suggestions count, maybe time spent on pp/category and other stats
+
+
+
+
